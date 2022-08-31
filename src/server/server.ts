@@ -1,3 +1,5 @@
+// import * as Cfx from 'fivem-js';
+
 onNet('helloserver', () => {
   const _source = (global as any).source;
 

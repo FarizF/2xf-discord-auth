@@ -1,3 +1,5 @@
+// import * as Cfx from 'fivem-js';
+
 setImmediate(() => {
   emitNet('helloserver');
 });
