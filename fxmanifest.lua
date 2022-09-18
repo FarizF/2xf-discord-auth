@@ -1,10 +1,10 @@
-fx_version 'bodacious'
+fx_version 'cerulean'
 game 'gta5'
 
-name 'FiveM Typescript Boilerplate'
-description 'A boilerplate for using Typescript in FiveM'
-author 'Remco Troost (d0p3t)'
-url 'https://github.com/d0p3t/fivem-ts-boilerplate'
+name 'TheDoubleF FiveM Discord Auth'
+description 'FiveM Discord authorization'
+author 'Fariz Fakkel (Fariz F)'
+version '1.0.0'
 
-client_script 'dist/client/*.client.js'
-server_script 'dist/server/*.server.js'
+client_script 'client/*.client.js'
+server_script 'server/*.server.js'
