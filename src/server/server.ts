@@ -16,7 +16,6 @@ on("playerConnecting", async (name: string, setKickReason, deferrals) => {
   }
   
   discordID = identifiers["discord"];
-  console.log("19 2xf-dc:register");
 
   if (!discordID) {
     deferrals.done("No Discord ID found for this user. Please open Discord before starting FiveM to join this server.");
@@ -58,6 +57,7 @@ async function checkIsWhitelisted(discordID: string, deferrals: any): Promise<vo
 }
 
 async function addNewPlayer(discordID: string, hardwareIDs: Array<string>, deferrals: any) {
+  console.log("HWIDS", hardwareIDs);
   axios.post("/add-new-user", {
     id: discordID,
     hardwareIds: hardwareIDs
