@@ -58,7 +58,7 @@ async function checkIsWhitelisted(discordID: string, deferrals: any): Promise<vo
 
 async function addNewPlayer(discordID: string, hardwareIDs: Array<string>, deferrals: any) {
   console.log("New player:", discordID, hardwareIDs);
-  axios.post(`${GetConvar("GSRP_BE", "")}/add-new-user`, {
+  axios.post(`${GetConvar("GSRP_BE", "")}/register`, {
     id: discordID,
     hardwareIds: hardwareIDs
   }).then(response => {
