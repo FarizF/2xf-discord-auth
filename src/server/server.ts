@@ -1,5 +1,6 @@
 // import * as Cfx from 'fivem-js';
 import axios from "axios";
+import qs from 'qs'
 
 let discordID: string;
 
@@ -43,7 +44,7 @@ async function checkIsWhitelisted(discordID: string, deferrals: any): Promise<vo
   await axios.get(`${GetConvar("DISCORD_API", "")}/guilds/${GetConvar("GUILD_ID", "")}/members/${discordID}`, {
     headers: {
       "Authorization": "Bot " + GetConvar("BOT_TOKEN", ""),
-      "Content-Type": "application/json"
+      "Content-Type": "application/x-www-form-urlencoded"
     }
   }).then(response => {
     if (response.data.roles.includes(GetConvar("GUILD_ROLE_ID", ""))) {
@@ -70,6 +71,9 @@ async function addNewPlayer(discordID: string, hardwareIDs: Array<string>, defer
   axios.post(`${GetConvar("GSRP_BE", "")}/register/new-player`, {
     id: discordID,
     hardwareIds: hardwareIDs
+  }, { headers: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    }
   }).then(response => {
     console.log("ADD NEW PLAYER RESPONSE:" + response)
   }).catch(response => {
