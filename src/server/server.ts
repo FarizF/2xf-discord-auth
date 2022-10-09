@@ -28,7 +28,8 @@ on("playerConnecting", async (name: string, setKickReason, deferrals) => {
   console.log("2xf-dc:register");
   emit("2xf-dc:register", discordID);
   
-  const returningPlayer = "";
+  const returningPlayer = getReturningPlayer(discordID);
+  console.log(returningPlayer);
   const hardwareIDs = getPlayerTokens(player);
   
   if (!returningPlayer)
@@ -56,9 +57,17 @@ async function checkIsWhitelisted(discordID: string, deferrals: any): Promise<vo
   });
 }
 
+async function getReturningPlayer(discordID: string): Promise<string> {
+  return axios.get(`${GetConvar("GSRP_BE", "")}/register/returning/${discordID}`)
+  .then(response => {
+    const id: string = response.data.id;
+    return id ? id : "";
+  })
+}
+
 async function addNewPlayer(discordID: string, hardwareIDs: Array<string>, deferrals: any) {
   console.log("New player:", discordID, hardwareIDs);
-  axios.post(`${GetConvar("GSRP_BE", "")}/register`, {
+  axios.post(`${GetConvar("GSRP_BE", "")}/register/new-player`, {
     id: discordID,
     hardwareIds: hardwareIDs
   }).then(response => {
